@@ -54,6 +54,17 @@ void AZombie::Tick(float DeltaTime)
 
 
 }
+void AZombie::SetVelocidad(int32 myVelocidad)
+{
+	Velocidad = myVelocidad;
+}
+
+float AZombie::GetVelocidad()
+{
+	return Velocidad;
+}
+
+
 void AZombie::morir()
 {
 	Destroy();			//El actor se destruye

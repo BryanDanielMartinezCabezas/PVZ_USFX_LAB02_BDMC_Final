@@ -33,6 +33,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void SetVelocidad(int32 myVelocidad);
+	float GetVelocidad();
 	UPROPERTY(EditAnywhere)
 	float Velocidad;
 	float VelocidadX;

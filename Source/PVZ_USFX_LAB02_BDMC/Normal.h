@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "NivelDificultad.h"
+#include "Zombie.h"
 #include "Normal.generated.h"
 
 UCLASS()
@@ -15,6 +16,11 @@ class PVZ_USFX_LAB02_BDMC_API ANormal : public AActor, public INivelDificultad
 public:	
 	// Sets default values for this actor's properties
 	ANormal();
+public:
+	// Función para obtener la instancia de AZombie
+	 AZombie* GetZombieActor() const;
+	 AZombie* zombie;
+	 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -24,12 +30,15 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
+	
 	//Nombre de la velocidad
+	
 	int Velocidad;
 	//Nombre de la vida
 	int Vida;
 	//Nombre del Tamaño
 	int Tamano;
+	int velocidadZ;
 public:
 	//Set the name of the Swimming Pool
 	void DefinirVelocidad(int myVelocidad) ;
@@ -37,8 +46,7 @@ public:
 	void DefinirVida(int myVida) ;
 	//Set the name of the Rooms
 	void DefinirTamano(int myTamano);
-
 	//Logs all the Lodging floors
 	void CaracteristicasNivelDificultad();
-
+	TArray<AZombie*> Zombies;
 };

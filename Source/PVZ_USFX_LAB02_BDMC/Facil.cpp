@@ -51,7 +51,6 @@ void AFacil::CrearTamano()
 }
 
 
-
 ANormal* AFacil::GetNormal()
 {
 	return nullptr;

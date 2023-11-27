@@ -35,7 +35,6 @@ public:
 	//Create the Restaurants
 	virtual void CrearTamano() override;
 
-
 	virtual class ANormal* GetNormal() override;
 
 

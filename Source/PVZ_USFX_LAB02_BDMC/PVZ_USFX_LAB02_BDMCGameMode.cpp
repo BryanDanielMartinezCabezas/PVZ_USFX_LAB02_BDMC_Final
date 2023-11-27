@@ -62,8 +62,8 @@ void APVZ_USFX_LAB02_BDMCGameMode::BeginPlay()
 	//Spawn Builder and Engineer
 	Dificil = GetWorld()->SpawnActor<ADificil>(ADificil::StaticClass());
 	Facil = GetWorld()->SpawnActor<AFacil>(AFacil::StaticClass());
-
 	Dificultad = GetWorld()->SpawnActor<ASeleccionDificultad>(ASeleccionDificultad::StaticClass());
+
 	//Set the Builder for the Engineer and create the buildings
 	Dificultad->DefinirConstructorDif(Dificil);
 	Dificultad->ConstruirDificultad();

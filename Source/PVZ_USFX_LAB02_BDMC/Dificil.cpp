@@ -35,7 +35,7 @@ void ADificil::CrearVelocidad()
 {
 	if (!Normal) {UE_LOG(LogTemp, Error, TEXT("CrearVelocidad():Normal es NULL, Asegurate de haberlo incializado")); return; }
 			//Set the Swimming Pool of the Lodging
-	Normal->DefinirVelocidad(2);
+	Normal->DefinirVelocidad(5);
 }
 
 void ADificil::CrearVida()
@@ -50,11 +50,12 @@ void ADificil::CrearTamano()
 {
 	if (!Normal) {UE_LOG(LogTemp, Error, TEXT("CrearTamano():Normal es NULL, Asegurate de haberlo incializado")); return; }
 	//Set the Restaurants of the Lodging
-	Normal->DefinirTamano(3);
+	Normal->DefinirTamano(4);
 }
+
 
 ANormal* ADificil::GetNormal()
 {
-	return nullptr;
+	return Normal;
 }
 
