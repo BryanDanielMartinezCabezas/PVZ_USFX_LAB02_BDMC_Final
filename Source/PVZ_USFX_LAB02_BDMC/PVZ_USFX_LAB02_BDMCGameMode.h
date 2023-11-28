@@ -60,8 +60,8 @@ public:
 	// Declarar un vector de objetos
 	TArray<AZombie*> Zombies;
 	TArray<AZombieNocturno*> ZombiesNocturnos;
-
-
+	AZombie* Zombie;
+	int Velocidad;
 
 	// Declarar un mapa de objetos PARTE DEL EXAMEN
 	TMap<FString, AActor*> PlantasZombies;

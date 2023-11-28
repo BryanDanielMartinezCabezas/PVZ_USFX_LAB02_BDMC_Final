@@ -35,14 +35,14 @@ void ADificil::CrearVelocidad()
 {
 	if (!Normal) {UE_LOG(LogTemp, Error, TEXT("CrearVelocidad():Normal es NULL, Asegurate de haberlo incializado")); return; }
 			//Set the Swimming Pool of the Lodging
-	Normal->DefinirVelocidad(5);
+	Normal->DefinirVelocidad(4.0);
 }
 
 void ADificil::CrearVida()
 {
 	if (!Normal) {UE_LOG(LogTemp, Error, TEXT("CrearVida():Normal es NULL, Asegurate de haberlo incializado")); return; }
 			//Set the Lobby Area of the Lodging
-	Normal->DefinirVida(5);
+	Normal->DefinirVida(2);
 
 }
 

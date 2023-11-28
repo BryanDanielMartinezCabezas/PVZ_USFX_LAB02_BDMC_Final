@@ -16,14 +16,22 @@ ANormal::ANormal()
 
 }
 
-void ANormal::DefinirVelocidad(int myVelocidad)
+void ANormal::DefinirVelocidad(AZombie* ZombieActual,float myVelocidad)
 {
-	Velocidad = myVelocidad;
+
+	ZombieActual->Velocidad = myVelocidad;
+	//VelocidadN = zombie->Velocidad;
+	//VelocidadA = myVelocidad;
+	//zombie->Velocidad=VelocidadN;
+	//if (!zombie) { UE_LOG(LogTemp, Error, TEXT("DefinirVelocidad():zombie es NULL, Asegurate de haberlo incializado")); return; }
+	//else{ UE_LOG(LogTemp, Error, TEXT("Else")); return; }
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Mensaje fuera del If; %f"), VelocidadN));
+	//zombie->Velocidad = VelocidadN;
 }
 
 void ANormal::DefinirVida(int myVida)
 {
-	Vida = myVida;
+	Vida = 1;
 }
 
 void ANormal::DefinirTamano(int myTamano)
@@ -31,11 +39,16 @@ void ANormal::DefinirTamano(int myTamano)
 	Tamano = myTamano;
 }
 
+void ANormal::SetZombie(AZombie* _Zombie)
+{
+	Zombie2 = _Zombie;
+}
+
 void ANormal::CaracteristicasNivelDificultad()
 {
 	// Logs the name of each floors
 //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("La cantidad de velocidad para esta dificultad es: %s"), *FString::SanitizeFloat(Velocidad)));
-GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("La cantidad de velocidad para este nivel es: %i"), Velocidad));
+GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("La cantidad de velocidad para este nivel es: %f"), VelocidadN));
 GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("La cantidad de vida para esta dificultad es: %s"), *FString::SanitizeFloat(Vida)));
 GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("La cantidad de Tamano para esta dificultad es: %s"), *FString::SanitizeFloat(Tamano)));
 
@@ -45,30 +58,10 @@ GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT(
 void ANormal::BeginPlay()
 {
 	Super::BeginPlay();
-
-	for (int i = 0; i < 2; i++)
-	{
-		FVector SpawnLocationZombie = FVector(-800.0f + i * 100.0f, 0.0f, 160.0f);
-		AZombie* NuevoZombieCono = GetWorld()->SpawnActor<AZombieCono>(AZombieCono::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
-		Zombies.Add(NuevoZombieCono);
-	}
-
-	// Generar 2 zombies cubo
-	for (int i = 0; i < 2; i++)
-	{
-		FVector SpawnLocationZombie = FVector(-800.0f + i * 100.0f, 100.0f, 160.0f);
-		AZombie* NuevoZombieCubo = GetWorld()->SpawnActor<AZombieCubo>(AZombieCubo::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
-		Zombies.Add(NuevoZombieCubo);
-	}
-
-	// Generar 8 zombies comunes
-	for (int i = 0; i < 8; i++)
-	{
-		FVector SpawnLocationZombie = FVector(-800.0f + i * 100.0f, 200.0f, 160.0f);
-		AZombie* NuevoZombieComun = GetWorld()->SpawnActor<AZombieComun>(AZombieComun::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
-		Zombies.Add(NuevoZombieComun);
-	}
 }
+
+
+
 
 // Called every frame
 void ANormal::Tick(float DeltaTime)

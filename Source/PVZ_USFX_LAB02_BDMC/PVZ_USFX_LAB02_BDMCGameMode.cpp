@@ -53,8 +53,6 @@ void APVZ_USFX_LAB02_BDMCGameMode::BeginPlay()
 
 
 
-
-
 	//Parte del segundo Parcial
 	Super::BeginPlay();
 

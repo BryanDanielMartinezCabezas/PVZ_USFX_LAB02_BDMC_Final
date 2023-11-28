@@ -59,7 +59,7 @@ void AZombie::SetVelocidad(int32 myVelocidad)
 	Velocidad = myVelocidad;
 }
 
-float AZombie::GetVelocidad()
+float AZombie::GetVelocidad() 
 {
 	return Velocidad;
 }
