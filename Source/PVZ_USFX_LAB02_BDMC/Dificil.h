@@ -19,6 +19,7 @@ private:
 	//The Lodging Actor
 	UPROPERTY(VisibleAnywhere, Category = "Dificultad Dificil")
 	class ANormal* Normal;
+	class AZombie* zombieActual;
 
 protected:
 	// Called when the game starts or when spawned

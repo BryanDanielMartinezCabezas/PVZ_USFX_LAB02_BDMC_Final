@@ -20,6 +20,7 @@ void ANormal::DefinirVelocidad(AZombie* ZombieActual,float myVelocidad)
 {
 
 	ZombieActual->Velocidad = myVelocidad;
+	VelocidadN = ZombieActual->Velocidad;
 	//VelocidadN = zombie->Velocidad;
 	//VelocidadA = myVelocidad;
 	//zombie->Velocidad=VelocidadN;

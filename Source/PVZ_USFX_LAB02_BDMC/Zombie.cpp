@@ -18,6 +18,7 @@ AZombie::AZombie()
 	Velocidad = 0.2f;
 
 	//InitialLifeSpan = 5; //Para que el actor se destruya
+
 }
 
 // Called when the game starts or when spawned
@@ -56,6 +57,7 @@ void AZombie::Tick(float DeltaTime)
 }
 void AZombie::SetVelocidad(int32 myVelocidad)
 {
+
 	Velocidad = myVelocidad;
 }
 

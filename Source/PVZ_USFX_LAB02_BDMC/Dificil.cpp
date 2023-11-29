@@ -3,7 +3,7 @@
 
 #include "Dificil.h"
 #include "Normal.h"
-
+#include "Zombie.h"
 // Sets default values
 ADificil::ADificil()
 {
@@ -34,8 +34,10 @@ void ADificil::Tick(float DeltaTime)
 void ADificil::CrearVelocidad()
 {
 	if (!Normal) {UE_LOG(LogTemp, Error, TEXT("CrearVelocidad():Normal es NULL, Asegurate de haberlo incializado")); return; }
-			//Set the Swimming Pool of the Lodging
-	Normal->DefinirVelocidad(4.0);
+	//Set the Swimming Pool of the Lodging
+	AZombie* zombieNuevo = GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass());
+
+	Normal->DefinirVelocidad(zombieNuevo, 0.9f);
 }
 
 void ADificil::CrearVida()
