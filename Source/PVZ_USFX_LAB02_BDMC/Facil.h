@@ -7,6 +7,9 @@
 #include "ModificarDificultad.h"
 #include "Facil.generated.h"
 
+
+class AZombie;
+
 UCLASS()
 class PVZ_USFX_LAB02_BDMC_API AFacil : public AActor, public IModificarDificultad
 {
@@ -26,6 +29,11 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	FVector SpawnLocationZombie = FVector(-800.0f, 0.0f, 160.0f);
+	FVector LocalizacionObjetivo = FVector(-800.0f, -600.0f, 160.0f);
+	FVector Direccion = LocalizacionObjetivo - FVector(-800.0f, 400.0f, 160.0f);
+	//FVector SpawnLocationZombie = FVector(-800.0f, 0.0f, 160.0f);
+	TArray<AZombie*> Zombies;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

@@ -15,6 +15,7 @@
 #include "Dificil.h"
 #include "Normal.h"
 #include "Facil.h"
+#include "ZombieMutante.h"
 #include "SeleccionDificultad.h"
 //#include "ZombieNocturno.h"
 //#include "Luna.h"
@@ -45,7 +46,7 @@ void APVZ_USFX_LAB02_BDMCGameMode::BeginPlay()
 {
 	UWorld* const World = GetWorld();
 
-	//GetWorldTimerManager().SetTimer(TemporizadorGenerarHorda, this, &APVZ_USFX_LAB02_BDMCGameMode::GenerarHordaDeZombies, 1.0f, true);
+	/*GetWorldTimerManager().SetTimer(TemporizadorGenerarHorda, this, &APVZ_USFX_LAB02_BDMCGameMode::GenerarHordaDeZombies, 1.0f, true);*/
 
 	/*GetWorldTimerManager().SetTimer(TemporizadorGenerarCono, this, &APVZ_USFX_LAB02_BDMCGameMode::GenerarZombieCono, 1.0f, false);*/
 
@@ -56,18 +57,73 @@ void APVZ_USFX_LAB02_BDMCGameMode::BeginPlay()
 	//Parte del segundo Parcial
 	Super::BeginPlay();
 
-
+	//////////////////////////////////////////////////////////////Builder
 	//Spawn Builder and Engineer
 	Dificil = GetWorld()->SpawnActor<ADificil>(ADificil::StaticClass());
 	Facil = GetWorld()->SpawnActor<AFacil>(AFacil::StaticClass());
 	Dificultad = GetWorld()->SpawnActor<ASeleccionDificultad>(ASeleccionDificultad::StaticClass());
 
 	//Set the Builder for the Engineer and create the buildings
-	Dificultad->DefinirConstructorDif(Dificil);
+	Dificultad->DefinirConstructorDif(Facil);
+	//Dificultad->DefinirConstructorDif(Dificil);
+
 	Dificultad->ConstruirDificultad();
 	//Get the Engineer's Lodging and Logs the created buildings
 	ANormal* Normal = Dificultad->GetNormal();
 	Normal->CaracteristicasNivelDificultad();
+	/////////////////////////////////////////////////////////////////
+	// 
+	// 
+	// 
+	// 
+	// 
+	// 
+	// 
+	// //////////////////////////////////////////////////////////////
+		//Create the Slot Machine and set its Dollars Amount to 100
+	//////////////////////////////////////////////////////////////////////////////////State
+	FVector SpawnLocationZombie = FVector(-800.0f, 0.0f, 160.0f);
+	ZombieMutante = GetWorld()->SpawnActor<AZombieMutante>(AZombieMutante::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
+
+
+	ZombieMutante->Inicializar(3);
+
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Estado Actual: %s"), *ZombieMutante->GetEstado()->ToString()));
+
+
+	GetWorldTimerManager().SetTimer(Estadouno , this, &APVZ_USFX_LAB02_BDMCGameMode::EstadoUno, 3.0f, false);
+    GetWorldTimerManager().SetTimer(Estadodos, this, &APVZ_USFX_LAB02_BDMCGameMode::EstadoDos, 10.0f, false);
+	GetWorldTimerManager().SetTimer(Estadotres, this, &APVZ_USFX_LAB02_BDMCGameMode::EstadoTres, 15.0f, false);
+
+
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+	//GetWorldTimerManager().SetTimer(RegenerarSaludTimerHandle, ZombieMutante, &AZombieMutante::RegenerarSalud, 5.0f, false);
+
+
+	////ZombieMutante->RegenerarSalud();
+
+
+	////GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Estado Actual: %s"), *ZombieMutante->GetEstado()->ToString()));
+
+	//GetWorldTimerManager().SetTimer(EndurarHandle, ZombieMutante, &AZombieMutante::RegenerarSalud, 10.0f, false);
+	////ZombieMutante->RegenerarSalud();
+	////GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Estado Actual: %s"), *ZombieMutante->GetEstado()->ToString()));
+
+
+	//GetWorldTimerManager().SetTimer(AgrandarHandle, ZombieMutante, &AZombieMutante::RegenerarSalud, 15.0f, false);
+	////ZombieMutante->RegenerarSalud();
+	////GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Estado Actual: %s"), *ZombieMutante->GetEstado()->ToString()));
+
+	////GetWorldTimerManager().SetTimer(RegenerarSaludTimerHandle, ZombieMutante, &AZombieMutante::Agrandar, 5.0f, false);
+	////ZombieMutante->Agrandar();
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Estado Actual: %s"), *ZombieMutante->GetEstado()->ToString()));
 
 
 
@@ -135,6 +191,32 @@ void APVZ_USFX_LAB02_BDMCGameMode::BeginPlay()
 //Change the time of the Clock Tower, so the Subscribers can execute their own routine
 }
 
+void APVZ_USFX_LAB02_BDMCGameMode::EstadoUno()
+{
+	ZombieMutante->RegenerarSalud();
+	
+
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Estado Actual: %s"), *ZombieMutante->GetEstado()->ToString()));
+}
+
+void APVZ_USFX_LAB02_BDMCGameMode::EstadoDos()
+{
+	ZombieMutante->RegenerarSalud();
+
+
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Estado Actual: %s"), *ZombieMutante->GetEstado()->ToString()));
+}
+
+void APVZ_USFX_LAB02_BDMCGameMode::EstadoTres()
+{
+	ZombieMutante->RegenerarSalud();
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Estado Actual: %s"), *ZombieMutante->GetEstado()->ToString()));
+}
+
+
+
+
+
 //void APVZ_USFX_LAB02_BDMCGameMode::DefinirDia() {
 //
 //	Luna->DefinirTiempo("Dia");
@@ -145,6 +227,7 @@ void APVZ_USFX_LAB02_BDMCGameMode::BeginPlay()
 //
 //	Luna->DefinirTiempo("Noche");
 //}
+
 
 
 // PARTE DEL EXAMEN PARTE DEL EXAMEN  DE LABORATORIO PARTE DEL EXAMEN PARTE DEL EXAMEN PARTE DEL EXAMEN PARTE DEL EXAMEN PARTE DEL EXAMEN PARTE DEL EXAMEN PARTE DEL EXAMEN PARTE DEL EXAMEN
@@ -277,6 +360,8 @@ void APVZ_USFX_LAB02_BDMCGameMode::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+
 
 
 void APVZ_USFX_LAB02_BDMCGameMode::aumentovelocidad()

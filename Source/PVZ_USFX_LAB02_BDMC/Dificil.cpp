@@ -35,9 +35,9 @@ void ADificil::CrearVelocidad()
 {
 	if (!Normal) {UE_LOG(LogTemp, Error, TEXT("CrearVelocidad():Normal es NULL, Asegurate de haberlo incializado")); return; }
 	//Set the Swimming Pool of the Lodging
-	AZombie* zombieNuevo = GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass());
-
-	Normal->DefinirVelocidad(zombieNuevo, 0.9f);
+	AZombie* zombieNuevo = GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
+	//AZombie* zombieNuevo = GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass());
+	Normal->DefinirVelocidad(zombieNuevo, 0.8f);
 }
 
 void ADificil::CrearVida()

@@ -33,6 +33,7 @@ protected:
 
 private:
 	class ALuna* Luna;
+	class AZombieMutante* ZombieMutante;
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -49,6 +50,14 @@ public:
 	FTimerHandle TemporizadorGenerarHombreLobo;
 	FTimerHandle TemporizadorGenerarFantasma;
 	FTimerHandle TemporizadorGenerarVampiro;
+	FTimerHandle TimerHandle;
+	FTimerHandle Estadouno;
+	FTimerHandle Estadodos;
+	FTimerHandle Estadotres;
+	FTimerDelegate TimerDelegate;
+	FTimerHandle RegenerarSaludTimerHandle;
+	FTimerHandle EndurarHandle;
+	FTimerHandle AgrandarHandle;
 	FVector contador;
 	FVector localizacion;
 public:
@@ -76,6 +85,9 @@ public:
 	//void GenerarZombieFantasma();
 	//void DefinirNoche();
 	//void DefinirDia();
+	void EstadoUno();
+	void EstadoDos();
+	void EstadoTres();
 	void aumentovelocidad();
 };
 

@@ -26,6 +26,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	FVector LocalizacionObjetivo = FVector(-800.0f, -600.0f, 160.0f);
+	FVector Direccion = LocalizacionObjetivo - FVector(-800.0f, 400.0f, 160.0f);
+	FVector SpawnLocationZombie = FVector(-800.0f, 0.0f, 160.0f);
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -37,6 +40,4 @@ public:
 	virtual void CrearTamano() override;
 
 	virtual class ANormal* GetNormal() override;
-
-
 };
